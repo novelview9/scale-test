@@ -1,7 +1,7 @@
 import { serialHandler } from "utils/serial-handler";
 import { useEffect, useState } from "react";
 import useWebSocket from 'react-use-websocket';
-
+import dynamic from 'next/dynamic'
 
 const IndexPage = () => {
   const [data, setData] = useState<any>(["test"]);
@@ -12,9 +12,6 @@ const IndexPage = () => {
   useEffect(() => {
     console.log(lastMessage);
   }, [lastMessage]);
-  const getData = async () => {
-    setData((prev) => [...prev, 'wow']);
-  };
   const clearData = async () => {
     setData([])
   };
@@ -22,7 +19,6 @@ const IndexPage = () => {
     <>
       <div>
         <input>{lastMessage}</input>
-        <button onClick={getData}>getData</button>
         <button onClick={clearData}>clearData</button>
       </div>
       <div>
@@ -34,4 +30,7 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+
+export default dynamic(() => Promise.resolve(IndexPage), {
+  ssr: false
+})
