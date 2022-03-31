@@ -10,7 +10,7 @@ const IndexPage = () => {
     console.log(readyState)
   }, [readyState]);
   useEffect(() => {
-    setData((prev) => [...prev, lastMessage]);
+    console.log(lastMessage);
   }, [lastMessage]);
   const getData = async () => {
     setData((prev) => [...prev, 'wow']);
