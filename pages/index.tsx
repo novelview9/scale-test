@@ -18,6 +18,8 @@ const IndexPage = () => {
   return (
     <>
       <div>
+        <p>weight</p>
+        <input value={data} />
         <button onClick={clearData}>clearData</button>
       </div>
       </>
