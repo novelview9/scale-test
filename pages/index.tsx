@@ -18,7 +18,6 @@ const IndexPage = () => {
   return (
     <>
       <div>
-        <input>{lastMessage}</input>
         <button onClick={clearData}>clearData</button>
       </div>
       <div>
