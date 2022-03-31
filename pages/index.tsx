@@ -5,12 +5,12 @@ import dynamic from 'next/dynamic'
 
 const IndexPage = () => {
   const [data, setData] = useState<any>(["test"]);
-  const { lastMessage } = useWebSocket("ws://127.0.0.1:2012");
+  const { lastJsonMessage } = useWebSocket("ws://127.0.0.1:2012");
     useEffect(() => {
-    if (lastMessage !== null) {
-      console.log(lastMessage);
+    if (lastJsonMessage !== null) {
+      console.log(lastJsonMessage);
     }
-  }, [lastMessage]);
+  }, [lastJsonMessage]);
 
   const clearData = async () => {
     setData([])
