@@ -4,11 +4,11 @@ import useWebSocket from 'react-use-websocket';
 import dynamic from 'next/dynamic'
 
 const IndexPage = () => {
-  const [data, setData] = useState<any>(["test"]);
+  const [data, setData] = useState<any>("");
   const { lastJsonMessage } = useWebSocket("ws://127.0.0.1:2012");
     useEffect(() => {
     if (lastJsonMessage !== null) {
-      console.log(lastJsonMessage);
+      setData(lastJsonMessage.data);
     }
   }, [lastJsonMessage]);
 
@@ -18,6 +18,7 @@ const IndexPage = () => {
   return (
     <>
       <div>
+        <p>weight</p> <iput>{data}</input>
         <button onClick={clearData}>clearData</button>
       </div>
       <div>
