@@ -21,12 +21,7 @@ const IndexPage = () => {
         <p>weight</p> <input>{data}</input>
         <button onClick={clearData}>clearData</button>
       </div>
-      <div>
-        {data.map((line) => (
-          <p>{line}</p>
-        ))}
-      </div>
-    </>
+      </>
   );
 };
 
