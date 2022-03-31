@@ -13,7 +13,7 @@ const IndexPage = () => {
   }, [lastJsonMessage]);
 
   const clearData = async () => {
-    setData([])
+    setData("")
   };
   return (
     <>
