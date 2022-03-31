@@ -8,7 +8,7 @@ const IndexPage = () => {
   const { lastJsonMessage } = useWebSocket("ws://127.0.0.1:2012");
     useEffect(() => {
     if (lastJsonMessage !== null) {
-      setData(lastJsonMessage.data);
+      console.log(lastJsonMessage)
     }
   }, [lastJsonMessage]);
 
