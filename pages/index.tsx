@@ -1,14 +1,19 @@
 import { serialHandler } from "utils/serial-handler";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useWebSocket from 'react-use-websocket';
+
+
+
+
 
 const IndexPage = () => {
-  const [data, setData] = useState(["test"]);
-  const onClick = async () => {
-    await serialHandler.init();
-  };
+  const [data, setData] = useState<any>(["test"]);
+  const { lastMessage, readyState } = useWebSocket("ws://127.0.0.1:2012");
+  useEffect(() => {
+    setData((prev) => [...prev, lastMessage]);
+  }, [lastMessage]);
   const getData = async () => {
-    const newData = await serialHandler.read();
-    setData((prev) => [...prev, newData]);
+    setData((prev) => [...prev, 'wow']);
   };
   const clearData = async () => {
     setData([])
@@ -16,8 +21,7 @@ const IndexPage = () => {
   return (
     <>
       <div>
-        <input></input>
-        <button onClick={onClick}>클릭</button>
+        <input>{lastMessage}</input>
         <button onClick={getData}>getData</button>
         <button onClick={clearData}>clearData</button>
       </div>
