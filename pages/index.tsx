@@ -5,13 +5,13 @@ import dynamic from 'next/dynamic'
 
 const IndexPage = () => {
   const [data, setData] = useState<any>(["test"]);
-  const { lastMessage, readyState } = useWebSocket("ws://127.0.0.1:2012");
-  useEffect(() => {
-    console.log(readyState)
-  }, [readyState]);
-  useEffect(() => {
-    console.log(lastMessage);
+  const { lastMessage } = useWebSocket("ws://127.0.0.1:2012");
+    useEffect(() => {
+    if (lastMessage !== null) {
+      console.log(lastMessage);
+    }
   }, [lastMessage]);
+
   const clearData = async () => {
     setData([])
   };
